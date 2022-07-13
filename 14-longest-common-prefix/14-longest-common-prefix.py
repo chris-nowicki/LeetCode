@@ -6,6 +6,10 @@ class Solution:
         # no common prefix
         if strs is None or len(strs) == 0:
             return lcp
+        
+        if len(strs) == 1:
+            lcp = strs[0]
+            return lcp
 
         # find the string with the smallest length
         minLength = len(strs[0])
@@ -16,7 +20,7 @@ class Solution:
         # and then break the loop
         for i in range(0, minLength):
             current = strs[0][i]
-            for j in range(0, len(strs)):
+            for j in range(1, len(strs)):
                 if strs[j][i] != current:
                     return lcp
             lcp += current
